@@ -51,6 +51,25 @@ public class EchoUcaseServerTCP
             {
                 System.out.println("Client [" + clientAddr.getHostAddress() +  ":" + clientPort +"] > " + receivedText);
 
+                if(receivedText.endsWith("url")){
+                    String link = receivedText.substring(0, receivedText.length() -4);
+                    URL url = new URL(link);
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                    String textLine;
+                    while ((textLine = bufferedReader.readLine()) != null){
+                        if(textLine.contains("@")){
+                            String[] mailadress = textLine.split("@");
+                            if(mailadress[1].contains(".")){
+                                String[] domainName = mailadress[1].split(".");
+                                if(domainName[1].length() <= 3){
+                                    out.println(textLine);
+                                }
+                            }
+                        }
+                    }
+                }
+
                 String outText = receivedText.toUpperCase();
                 // Write the converted uppercase string to the connection socket
                 out.println(outText);
