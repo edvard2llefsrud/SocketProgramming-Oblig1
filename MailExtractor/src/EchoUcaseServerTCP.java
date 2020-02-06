@@ -61,10 +61,7 @@ public class EchoUcaseServerTCP
                         if(textLine.contains("@")){
                             String[] mailadress = textLine.split("@");
                             if(mailadress[1].contains(".")){
-                                String[] domainName = mailadress[1].split(".");
-                                if(domainName[1].length() <= 3){
-                                    out.println(textLine);
-                                }
+                                out.println(textLine);
                             }
                         }
                     }
