@@ -8,7 +8,7 @@ public class EchoUcaseServerTCP
 {
     public static void main(String[] args) throws IOException
     {
-        int portNumber = 5556; // Default port to use
+        int portNumber = 5555; // Default port to use
 
         if (args.length > 0)
         {
@@ -69,8 +69,6 @@ public class EchoUcaseServerTCP
                     BufferedReader input = new BufferedReader(new InputStreamReader(connectSocket.getInputStream()));
             ){
 
-                System.out.println("helllo");
-                //output.println("Hello");
                 String URL;
                 URL url;
                 BufferedReader inStream;
