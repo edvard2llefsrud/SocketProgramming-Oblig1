@@ -1,8 +1,5 @@
-/**
- * Socket programming example: TCP Client
- * DATA2410 Networking and Cloud Computing, Spring 2020
- * Raju Shrestha, OsloMet
- **/
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.io.*;
 import java.net.*;
 
@@ -11,7 +8,7 @@ public class EchoClientTCP
     public static void main(String[] args) throws IOException
     {
 
-        String hostName = "127.0.0.1"; // Default host, localhost
+        String hostName = "10.253.8.202"; // Default host, localhost
         int portNumber = 5555; // Default port to use
         if (args.length > 0)
         {
@@ -59,7 +56,26 @@ public class EchoClientTCP
                 // read from the socket and display
                 String receivedText = in.readLine();
 
-                System.out.println("Server [" + hostName +  ":" + portNumber + "] > " + receivedText);
+
+
+
+                //System.out.print("Server [" + hostName +  ":" + portNumber + "] > " + receivedText);
+
+
+                //Checks  the return value from the server
+                if(receivedText.equals("0")){
+                    while((receivedText= in.readLine())!=null){
+                        System.out.println(receivedText);
+                        if(receivedText.equals("")){
+                            break;
+                        }
+                    }
+                }else if(receivedText.equals("1")){
+                    System.out.println("Fant ingen mails");
+                }else{
+                    System.out.println("Couldn´t find the website.");
+                }
+
                 System.out.print("I (Client) [" + clientSocket.getLocalAddress().getHostAddress() + ":" + clientSocket.getLocalPort() + "] > ");
             }
         } catch (UnknownHostException e)
@@ -73,4 +89,3 @@ public class EchoClientTCP
         }
     }
 }
-
