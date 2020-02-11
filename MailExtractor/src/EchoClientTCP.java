@@ -71,7 +71,7 @@ public class EchoClientTCP
                         }
                     }
                 }else if(receivedText.equals("1")){
-                    System.out.println("Fant ingen mails");
+                    System.out.println("Couldn't find any Email-addresses");
                 }else{
                     System.out.println("Couldn´t find the website.");
                 }
