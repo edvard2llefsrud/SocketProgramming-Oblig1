@@ -36,6 +36,8 @@ public class EchoUcaseServerTCP
             while(true){
                 clientStarter aClient = new clientStarter(serverSocket.accept());
                 aClient.start();
+                System.out.println("Connected [" + aClient.aClientAdr + " : " + serverSocket.accept().getPort());
+
             }
 
 
